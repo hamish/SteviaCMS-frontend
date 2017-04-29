@@ -3,6 +3,21 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state ={
+    current_state:"initial"
+  };
+
+  constructor(){
+    super();
+    var myself=this;
+    setTimeout(function(){ console.log("timeout: second state");  myself.setState(prevState => ({
+      current_state: "second State"
+    }));
+    }, 3000);
+
+  }
+  
+
   render() {
     return (
       <div className="App">
@@ -11,7 +26,7 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save. It should reload by itself.
+          Current State: {this.state.current_state}
         </p>
       </div>
     );
