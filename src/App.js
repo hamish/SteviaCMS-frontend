@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
-  state ={
-    current_state:"initial"
-  };
 
   constructor(){
     super();
-    var myself=this;
-    setTimeout(function(){ console.log("timeout: second state");  myself.setState(prevState => ({
-      current_state: "second State"
-    }));
-    }, 3000);
-
+    this.state ={
+      current_state:"initial"
+    };
   }
   
+
+  componentDidMount() {
+    axios.get(`backend.json`)
+      .then(res => {
+        console.log(res);
+        this.setState( {current_state: "two",
+          backend_url:res.data.backend_url} );
+
+        // const posts = res.data.data.children.map(obj => obj.data);
+        // this.setState({ posts });
+      });
+  }
 
   render() {
     return (
@@ -26,7 +33,9 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          Current State: {this.state.current_state}
+          Current State: {this.state.current_state}<br />
+          Backend Url: {this.state.backend_url}
+
         </p>
       </div>
     );

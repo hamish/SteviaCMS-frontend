@@ -1,0 +1,5 @@
+{
+    "backend_url":"https://akee0oa2ke.execute-api.ap-southeast-2.amazonaws.com/dev/users/create",
+    "public_url":"http://abc.net.au/news"
+
+}
