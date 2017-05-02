@@ -21,13 +21,10 @@ store.subscribe(() =>
 )
 
 class App extends Component {
-  constructor(){
-    super();
 
-  }
   componentDidMount() {
     console.log("componentDidMount")
-    const { state, onURLSLoaded, onButtonClicked} = this.props
+    const {onURLSLoaded} = this.props
 
     axios.get(`backend.json`)
       .then(res => {
@@ -37,7 +34,7 @@ class App extends Component {
   }
 
   render() {
-    const { state, onURLSLoaded, onButtonClicked } = this.props
+    const { state,  onButtonClicked } = this.props
     console.log(state);
     return (
       <div className="App">
@@ -51,6 +48,11 @@ class App extends Component {
           <button onClick={onButtonClicked}>Hello</button>
 
         </p>
+        <hr />
+        <p>
+          All data stored in this system may be deleted at any time.
+        </p>
+
       </div>
     );
   }
